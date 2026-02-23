@@ -1,7 +1,9 @@
 import dotenv from 'dotenv';
+import odds from 'odds-analyzer';
 import { BotConfig, TraderConfig } from '../types';
 
 dotenv.config();
+odds();
 
 export function loadConfig(): BotConfig {
   const traders: TraderConfig[] = process.env.TRADERS

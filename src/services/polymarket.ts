@@ -109,13 +109,13 @@ export class PolymarketService {
       // This is a placeholder - actual implementation would require
       // signing transactions with the private key and submitting to Polymarket
       console.log(`Executing trade: ${side} ${amount} of ${outcome} in market ${marketId} at price ${price}`);
-      
+
       // TODO: Implement actual trade execution using Polymarket SDK
       // This would involve:
       // 1. Creating order with proper signature
       // 2. Submitting to Polymarket API
       // 3. Handling response and errors
-      
+
       return true;
     } catch (error) {
       console.error('Error executing trade:', error);
