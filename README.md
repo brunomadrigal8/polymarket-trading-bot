@@ -2,8 +2,8 @@
 
 A TypeScript-based CLI bot for automatically copying trades from selected traders on Polymarket.
 
-**Telegram:** [@topsecretagent_007](https://t.me/topsecretagent_007)  
-**GitHub:** [https://github.com/topsecretagent007/polymarket-trading-bot](https://github.com/topsecretagent007/polymarket-trading-bot)
+**Telegram:** [@brunomadrigal49](https://t.me/topsecretagent_007)  
+**GitHub:** [https://github.com/brunomadrigal0/polymarket-trading-bot](https://github.com/brunomadrigal0/polymarket-trading-bot)
 
 ## Features
 
@@ -17,7 +17,7 @@ A TypeScript-based CLI bot for automatically copying trades from selected trader
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/topsecretagent007/polymarket-trading-bot.git
+git clone https://github.com/brunomadrigal0/polymarket-trading-bot.git
 cd polymarket-trading-bot
 ```
 
@@ -156,4 +156,4 @@ polymarket-copy-trading-bot/
 
 ## Support
 
-For issues and questions, contact [@topsecretagent_007](https://t.me/topsecretagent_007) on Telegram.
+For issues and questions, contact [@brunomadrigal49](https://t.me/topsecretagent_007) on Telegram.
