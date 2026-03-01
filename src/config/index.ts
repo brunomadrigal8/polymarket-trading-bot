@@ -44,7 +44,7 @@ export function validateConfig(config: BotConfig): void {
     // include guidance so users know how to fix the situation
     throw new Error(
       'At least one trader must be configured. ' +
-        'Set the TRADERS environment variable to a JSON array (see README or run `npm run cli setup`).'
+      'Set the TRADERS environment variable to a JSON array (see README or run `npm run cli setup`).'
     );
   }
 }

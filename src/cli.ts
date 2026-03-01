@@ -40,7 +40,7 @@ function getBot(): CopyTradingBot {
       if (error.message.includes('trader must be configured')) {
         console.error(
           '👉 Please add at least one trader in the TRADERS environment variable ' +
-            '(or run `npm run cli setup`). See README for formatting.'
+          '(or run `npm run cli setup`). See README for formatting.'
         );
       }
       process.exit(1);
@@ -57,10 +57,10 @@ program
   .action(async (options) => {
     printBanner();
     const bot = getBot();
-    
+
     try {
       await bot.start();
-      
+
       if (options.daemon) {
         console.log('✅ Bot started in daemon mode');
         // Keep process alive
@@ -71,7 +71,7 @@ program
         console.log('💡 Use "npm run cli status" to check status');
         console.log('💡 Use "npm run cli trades" to view recent trades');
         printSeparator();
-        
+
         // Keep process alive and show interactive menu
         showInteractiveMenu();
       }
@@ -101,7 +101,7 @@ program
     printBanner();
     const bot = getBot();
     const status = bot.getStatus();
-    
+
     console.log('📊 Bot Status:');
     console.log(`   Running: ${status.running ? '✅ Yes' : '❌ No'}`);
     console.log(`   Traders: ${status.traders}`);
@@ -142,25 +142,25 @@ program
     try {
       const config = loadConfig();
       const polymarket = new PolymarketService(config.polymarketApiUrl);
-      
+
       console.log('📊 Fetching recent trades...\n');
-      
+
       for (const trader of config.traders) {
         console.log(`👤 Trader: ${trader.name || trader.address}`);
         const trades = await polymarket.getTradesByUser(trader.address, parseInt(options.limit));
-        
+
         if (trades.length === 0) {
           console.log('   No recent trades found\n');
           continue;
         }
-        
+
         trades.slice(0, parseInt(options.limit)).forEach((trade, index) => {
           console.log(`   ${index + 1}. ${trade.type.toUpperCase()} ${trade.amount} @ $${trade.price}`);
           console.log(`      Market: ${trade.market.slice(0, 20)}...`);
           console.log(`      Time: ${new Date(trade.timestamp).toLocaleString()}\n`);
         });
       }
-      
+
       printSeparator();
     } catch (error: any) {
       console.error('❌ Error fetching trades:', error.message);
@@ -177,10 +177,10 @@ program
     try {
       const config = loadConfig();
       const polymarket = new PolymarketService(config.polymarketApiUrl);
-      
+
       console.log('📊 Fetching active markets...\n');
       const markets = await polymarket.getMarkets(true);
-      
+
       markets.slice(0, parseInt(options.limit)).forEach((market, index) => {
         console.log(`${index + 1}. ${market.question}`);
         console.log(`   ID: ${market.id}`);
@@ -188,7 +188,7 @@ program
         console.log(`   Liquidity: $${parseFloat(market.liquidity).toFixed(2)}`);
         console.log(`   End Date: ${new Date(market.endDate).toLocaleString()}\n`);
       });
-      
+
       printSeparator();
     } catch (error: any) {
       console.error('❌ Error fetching markets:', error.message);
@@ -202,7 +202,7 @@ program
   .action(async () => {
     printBanner();
     console.log('🔧 Interactive Setup Wizard\n');
-    
+
     const answers = await inquirer.prompt([
       {
         type: 'input',
@@ -230,7 +230,7 @@ program
         message: 'Enter trader address to copy (or press Enter to skip):',
       },
     ]);
-    
+
     console.log('\n✅ Configuration saved!');
     console.log('📝 Please update your .env file with these values:');
     console.log('\nPRIVATE_KEY=' + answers.privateKey);
@@ -267,7 +267,7 @@ Select an option: `;
         console.log(`👥 Traders: ${status.traders}\n`);
         showInteractiveMenu();
         break;
-        
+
       case '2':
         try {
           const config = loadConfig();
@@ -283,7 +283,7 @@ Select an option: `;
         }
         showInteractiveMenu();
         break;
-        
+
       case '3':
         try {
           const config = loadConfig();
@@ -299,7 +299,7 @@ Select an option: `;
         }
         showInteractiveMenu();
         break;
-        
+
       case '4':
         try {
           const config = loadConfig();
@@ -313,7 +313,7 @@ Select an option: `;
         }
         showInteractiveMenu();
         break;
-        
+
       case '5':
         const botToStop = getBot();
         await botToStop.stop();
@@ -321,12 +321,12 @@ Select an option: `;
         rl.close();
         process.exit(0);
         break;
-        
+
       case '0':
         rl.close();
         process.exit(0);
         break;
-        
+
       default:
         console.log('\n❌ Invalid option\n');
         showInteractiveMenu();
