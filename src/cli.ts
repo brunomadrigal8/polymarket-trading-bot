@@ -36,6 +36,13 @@ function getBot(): CopyTradingBot {
       botInstance = new CopyTradingBot();
     } catch (error: any) {
       console.error('❌ Error initializing bot:', error.message);
+      // give the user actionable next steps when config is missing
+      if (error.message.includes('trader must be configured')) {
+        console.error(
+          '👉 Please add at least one trader in the TRADERS environment variable ' +
+            '(or run `npm run cli setup`). See README for formatting.'
+        );
+      }
       process.exit(1);
     }
   }

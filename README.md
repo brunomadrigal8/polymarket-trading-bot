@@ -56,6 +56,15 @@ SLIPPAGE_TOLERANCE=0.01
 TRADERS=[{"address":"0x123...","name":"Trader1","minTradeAmount":0.1,"maxTradeAmount":10}]
 ```
 
+> ⚠️ **Important:** the bot will **not start** unless at least one trader is configured. If you see the error
+>
+> ```
+> Error initializing bot: At least one trader must be configured
+> ```
+>
+> either set a valid JSON array in `TRADERS` or run the interactive setup with `npm run cli setup`.
+
+
 ## Usage
 
 ### CLI Commands

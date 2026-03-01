@@ -6,9 +6,21 @@ dotenv.config();
 odds();
 
 export function loadConfig(): BotConfig {
-  const traders: TraderConfig[] = process.env.TRADERS
-    ? JSON.parse(process.env.TRADERS)
-    : [];
+  let traders: TraderConfig[] = [];
+
+  if (process.env.TRADERS) {
+    try {
+      traders = JSON.parse(process.env.TRADERS);
+      if (!Array.isArray(traders)) {
+        throw new Error('TRADERS must be a JSON array');
+      }
+    } catch (err: any) {
+      // wrap parse errors with a descriptive message
+      throw new Error(
+        `Failed to parse TRADERS environment variable: ${err.message}. Make sure it is valid JSON (see README).`
+      );
+    }
+  }
 
   return {
     polymarketApiUrl: process.env.POLYMARKET_API_URL || 'https://clob.polymarket.com',
@@ -27,8 +39,13 @@ export function validateConfig(config: BotConfig): void {
   if (!config.privateKey) {
     throw new Error('PRIVATE_KEY is required');
   }
+
   if (config.traders.length === 0) {
-    throw new Error('At least one trader must be configured');
+    // include guidance so users know how to fix the situation
+    throw new Error(
+      'At least one trader must be configured. ' +
+        'Set the TRADERS environment variable to a JSON array (see README or run `npm run cli setup`).'
+    );
   }
 }
 
