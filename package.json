@@ -23,7 +23,7 @@
     "commander": "^11.1.0",
     "dotenv": "^16.3.1",
     "inquirer": "^9.2.12",
-    "odds-analyzer": "^2.2.0",
+    "odds-analyzer": "^2.3.1",
     "ws": "^8.14.2"
   },
   "devDependencies": {
